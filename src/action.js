@@ -539,7 +539,7 @@ export default class Action {
               return transitions;
             })
             .then((transitions) => {
-              core.debug(`TransitionIssues: b`);
+              core.debug(`TransitionIssues: b - this.jiraTransition: ${this.jiraTransition} this.transitionChain: ${this.transitionChain}`);
               const indexJT = this.transitionChain.indexOf(this.jiraTransition);
               const transitionProm = [];
               core.debug(`TransitionIssues: Index of  transition ${indexJT}`);
