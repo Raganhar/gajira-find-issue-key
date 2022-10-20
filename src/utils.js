@@ -127,7 +127,7 @@ export const eventTemplates = {
 export function assignJiraTransition(_context, _argv) {
   core.debug(`Event name: ${_context.eventName}`);
   let trans = undefined;
-  if (_context.eventName in ['pull_request_target','pull_request']) {
+  if (_context.eventName === 'pull_request_target' || _context.eventName ==='pull_request') {
     core.debug(`Payload action: ${_context.payload.action}`);
     if (_context.payload.action in ['closed'] && _context.payload.pull_request.merged === 'true') {
       trans =_argv.transitionOnPrMerge;
