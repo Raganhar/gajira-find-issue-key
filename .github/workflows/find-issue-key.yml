@@ -1,6 +1,6 @@
 # @prettier
-on:
-  pull_request:
+on: push
+#  pull_request:
 name: 'Test Find Issue Key'
 
 jobs:
@@ -47,3 +47,4 @@ jobs:
 #          else
 #            echo "::error:: Find issue from string failed"
 #          fi
+
