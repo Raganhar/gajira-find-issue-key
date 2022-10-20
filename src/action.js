@@ -438,7 +438,7 @@ export default class Action {
     const issuesPromises = [];
     for (const issueKey of combinedArray) {
       core.debug(`Stuff: ${typeof issueKey}, ${YAML.stringify(issueKey)}`);
-      if (_.isString(issueId)) {
+      if (_.isString(issueKey)) {
         core.debug(`Pushing: ${typeof issueKey}, ${YAML.stringify(issueKey)}`);
         issuesPromises.push(
           this.getIssue(issueKey, {
