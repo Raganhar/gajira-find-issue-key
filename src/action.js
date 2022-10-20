@@ -479,12 +479,12 @@ export default class Action {
             core.setOutput(`${issueObject.key}_fixVersions`, this.setToCommaDelimitedString(issueObject.fixVersions));
           }
         }
-
-        try {
-          ghResults.push(this.jiraToGitHub(issueObject));
-        } catch (error) {
-          core.error(error);
-        }
+        //
+        // try {
+        //   ghResults.push(this.jiraToGitHub(issueObject));
+        // } catch (error) {
+        //   core.error(error);
+        // }
         this.foundKeys.push(issueObject);
       }
     }
