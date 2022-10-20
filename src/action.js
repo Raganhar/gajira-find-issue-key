@@ -547,7 +547,7 @@ export default class Action {
                   transitions,
                   (t) => t.id === link || _.toLower(t.name) === _.toLower(link),
                 );
-
+                core.debug(`TransitionIssues: push ${issueId}`);
                 issueIds.push(issueId);
                 if (transitionToApply) {
                   const transitionId = transitionToApply.id;
@@ -563,13 +563,16 @@ export default class Action {
                   });
                   transitionProm.push(tI);
                 }
+                else{
+                  core.debug(`TransitionIssues: no transition applied ${issueId}`);
+                }
               }
               return Promise.allSettled(transitionProm);
             }),
         );
       }
       else{
-        core.debug(`transition not ok`);
+        core.error(`transition not ok for ${a?.key}`);
       }
     }
 
