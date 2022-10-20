@@ -38,7 +38,7 @@ jobs:
           jira-transition-on-pr-merge: 'In Progress'
           jira-transition-on-pr-open: 'In Progress'
           jira-transition-on-pr-approval: 'In Progress'
-          jira-transition-chain: 'To Do,In Progress'
+          jira-transition-chain: 'In Progress'
 #          from: string
 #          string: NIC-6 | will search in branch name
 
