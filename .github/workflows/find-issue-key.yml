@@ -32,6 +32,8 @@ jobs:
           github-token: ${{github.token}}
 #          include-merge-messages: true
           jira-transition-on-pr-merge: 'IN PROGRESS'
+          jira-transition-on-pr-open: 'IN PROGRESS'
+          jira-transition-on-pr-approval: 'IN PROGRESS'
 #          from: string
 #          string: NIC-6 | will search in branch name
 
