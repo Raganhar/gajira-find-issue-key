@@ -437,6 +437,7 @@ export default class Action {
     const ghResults = [];
     const issuesPromises = [];
     for (const issueKey of combinedArray) {
+      core.error(`Stuff: ${typeof issueKey}, ${YAML.stringify(issueKey)}`);
       issuesPromises.push(
         this.getIssue(issueKey, {
           fields: ['status', 'summary', 'fixVersions', 'priority', 'project', 'description', 'duedate'],
