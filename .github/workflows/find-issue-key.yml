@@ -1,6 +1,6 @@
 # @prettier
-on:
-  pull_request:
+on: push
+#  pull_request:
 name: 'Test Find Issue Key'
 
 jobs:
