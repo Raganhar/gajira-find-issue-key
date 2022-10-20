@@ -38,7 +38,9 @@ jobs:
         env:
           ISSUE_FOUND: ${{ steps.find.outputs.issue }}
         run: |
-          if [[ "${ISSUE_FOUND}" == "DVPS-342" ]];then
+          echo "::info:: Issue ${ISSUE_FOUND} was found"
+
+          if [[ "${ISSUE_FOUND}" == "NIC-6" ]];then
             echo "::info:: Issue ${ISSUE_FOUND} was found"
           else
             echo "::error:: Find issue from string failed"
