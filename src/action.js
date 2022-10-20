@@ -392,7 +392,7 @@ export default class Action {
       core.debug(`Raw string provided is: ${this.rawString}`);
       core.setOutput('string_issues', this.setToCommaDelimitedString(stringSet));
     }
-
+    core.debug(`getJiraKeysFromGitRange: eventName: ${this.context.eventName}`);
     const titleSet = this.getIssueSetFromString(this.context?.payload.pull_request?.title);
     if (_.startsWith(this.context.eventName, 'pull_request')) {
       core.debug(`Pull request title is: ${this.context.payload?.pull_request?.title}`);
