@@ -30,7 +30,7 @@ jobs:
         with:
           jira_base_url: ${{ secrets.JIRA_BASE_URL }}
           github-token: ${{github.token}}
-          include-merge-messages: true
+#          include-merge-messages: true
           jira-transition-on-pr-merge: 'IN PROGRESS'
 #          from: string
 #          string: NIC-6 | will search in branch name
