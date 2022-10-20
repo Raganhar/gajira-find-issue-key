@@ -31,7 +31,7 @@ jobs:
           jira_base_url: ${{ secrets.JIRA_BASE_URL }}
           github-token: ${{github.token}}
           from: string
-          string: DVPS-342 | will search in branch name
+          string: NIC-6 | will search in branch name
 
       - name: 'Find issue info'
         shell: bash
