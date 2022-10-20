@@ -604,6 +604,7 @@ export default class Action {
 
   /** @returns {Promise<import('jira.js/out/version2/models').Issue[]>} */
   async execute() {
+    core.debug(`hello`);
     if (this.argv.from === 'string') {
       return this.findIssueKeyIn(this.argv.string);
     }
