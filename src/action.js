@@ -535,9 +535,11 @@ export default class Action {
               if (!transitions) {
                 throw new Error('No transitions available');
               }
+              core.debug(`TransitionIssues: a`);
               return transitions;
             })
             .then((transitions) => {
+              core.debug(`TransitionIssues: b`);
               const indexJT = this.transitionChain.indexOf(this.jiraTransition);
               const transitionProm = [];
               core.debug(`TransitionIssues: Index of  transition ${indexJT}`);
