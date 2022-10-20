@@ -30,21 +30,24 @@ jobs:
         with:
           jira_base_url: ${{ secrets.JIRA_BASE_URL }}
           github-token: ${{github.token}}
-          from: string
-          string: NIC-6 | will search in branch name
+          include-merge-messages: true
+          jira-transition-on-pr-merge: 'IN PROGRESS'
+#          from: string
+#          string: NIC-6 | will search in branch name
 
-      - name: 'Find issue info'
-        shell: bash
-        env:
-          ISSUE_FOUND: ${{ steps.find.outputs.issue }}
-        run: |
-          echo "::info:: Issue ${ISSUE_FOUND} was found"
+#      - name: 'Find issue info'
+#        shell: bash
+#        env:
+#          ISSUE_FOUND: ${{ steps.find.outputs.issue }}
+#        run: |
+#          echo "::info:: Issue ${ISSUE_FOUND} was found"
+#
+#          if [[ "${ISSUE_FOUND}" == "NIC-6" ]];then
+#            echo "::info:: Issue ${ISSUE_FOUND} was found"
+#          else
+#            echo "::error:: Find issue from string failed"
+#          fi
 
-          if [[ "${ISSUE_FOUND}" == "NIC-6" ]];then
-            echo "::info:: Issue ${ISSUE_FOUND} was found"
-          else
-            echo "::error:: Find issue from string failed"
-          fi
 
 
 
