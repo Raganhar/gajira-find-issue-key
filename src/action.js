@@ -540,6 +540,7 @@ export default class Action {
             .then((transitions) => {
               const indexJT = this.transitionChain.indexOf(this.jiraTransition);
               const transitionProm = [];
+              core.debug(`TransitionIssues: Index of  transition ${indexJT}`);
               for (let index = 0; index < indexJT; index++) {
                 const link = this.transitionChain[index];
 
