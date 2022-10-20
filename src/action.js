@@ -621,7 +621,7 @@ export default class Action {
     await Promise.all([
       this.transitionIssues(jiraIssuesList),
       // this.outputReleaseNotes(jiraIssuesList),
-      this.updatePullRequestBody(jiraIssuesList, startJiraToken, endJiraToken),
+      // this.updatePullRequestBody(jiraIssuesList, startJiraToken, endJiraToken),
     ]);
 
     return jiraIssuesList;
