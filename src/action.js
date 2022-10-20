@@ -620,7 +620,7 @@ export default class Action {
     const jiraIssuesList = await this.getJiraKeysFromGitRange();
     await Promise.all([
       this.transitionIssues(jiraIssuesList),
-      this.outputReleaseNotes(jiraIssuesList),
+      // this.outputReleaseNotes(jiraIssuesList),
       this.updatePullRequestBody(jiraIssuesList, startJiraToken, endJiraToken),
     ]);
 
