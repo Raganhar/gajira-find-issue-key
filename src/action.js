@@ -518,6 +518,7 @@ export default class Action {
     for (const a of jiraIssuesList) {
       const issueId = a?.key;
       core.debug(this.style.bold.green(`TransitionIssues: Checking transition for ${issueId}`));
+      core.debug(`this.jiraTransition: ${this.jiraTransition} this.transitionChain: ${this.transitionChain}`);
       if (this.jiraTransition && this.transitionChain) {
         transitionOptionsProm.push(
           this.getIssueTransitions(issueId)
@@ -565,6 +566,9 @@ export default class Action {
               return Promise.allSettled(transitionProm);
             }),
         );
+      }
+      else{
+        core.debug(`transition not ok`);
       }
     }
 
