@@ -437,11 +437,15 @@ export default class Action {
     const ghResults = [];
     const issuesPromises = [];
     for (const issueKey of combinedArray) {
-      issuesPromises.push(
-        this.getIssue(issueKey, {
-          fields: ['status', 'summary', 'fixVersions', 'priority', 'project', 'description', 'duedate'],
-        }),
-      );
+      core.debug(`Stuff: ${typeof issueKey}, ${YAML.stringify(issueKey)}`);
+      if (_.isString(issueKey)) {
+        core.debug(`Pushing: ${typeof issueKey}, ${YAML.stringify(issueKey)}`);
+        issuesPromises.push(
+          this.getIssue(issueKey, {
+            fields: ['status', 'summary', 'fixVersions', 'priority', 'project', 'description', 'duedate'],
+          }),
+        );
+      }
     }
     const issuesPatchy = await Promise.all(issuesPromises);
     const issues = issuesPatchy.flatMap((f) => (f.length > 0 ? [...f] : []));
@@ -475,12 +479,12 @@ export default class Action {
             core.setOutput(`${issueObject.key}_fixVersions`, this.setToCommaDelimitedString(issueObject.fixVersions));
           }
         }
-
-        try {
-          ghResults.push(this.jiraToGitHub(issueObject));
-        } catch (error) {
-          core.error(error);
-        }
+        //
+        // try {
+        //   ghResults.push(this.jiraToGitHub(issueObject));
+        // } catch (error) {
+        //   core.error(error);
+        // }
         this.foundKeys.push(issueObject);
       }
     }
@@ -514,6 +518,7 @@ export default class Action {
     for (const a of jiraIssuesList) {
       const issueId = a?.key;
       core.debug(this.style.bold.green(`TransitionIssues: Checking transition for ${issueId}`));
+      core.debug(`this.jiraTransition: ${this.jiraTransition} this.transitionChain: ${this.transitionChain}`);
       if (this.jiraTransition && this.transitionChain) {
         transitionOptionsProm.push(
           this.getIssueTransitions(issueId)
@@ -561,6 +566,9 @@ export default class Action {
               return Promise.allSettled(transitionProm);
             }),
         );
+      }
+      else{
+        core.debug(`transition not ok`);
       }
     }
 

@@ -1,6 +1,7 @@
 # @prettier
-on: push
-#  pull_request:
+#on: push
+on:
+  pull_request:
 name: 'Test Find Issue Key'
 
 jobs:
@@ -34,6 +35,7 @@ jobs:
           jira-transition-on-pr-merge: 'IN PROGRESS'
           jira-transition-on-pr-open: 'IN PROGRESS'
           jira-transition-on-pr-approval: 'IN PROGRESS'
+          jira-transition-chain: 'TODO, IN PROGRESS, DONE'
 #          from: string
 #          string: NIC-6 | will search in branch name
 
