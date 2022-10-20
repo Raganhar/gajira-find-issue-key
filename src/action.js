@@ -570,7 +570,9 @@ export default class Action {
                   core.debug(`TransitionIssues: no transition applied ${issueId}`);
                 }
               }
-              return Promise.allSettled(transitionProm);
+              let promise = Promise.allSettled(transitionProm);
+              core.debug(`TransitionIssues: finished transitions for ${issueId}`);
+              return promise;
             }),
         );
       }
