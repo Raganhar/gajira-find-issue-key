@@ -125,20 +125,25 @@ export const eventTemplates = {
 };
 
 export function assignJiraTransition(_context, _argv) {
+  core.debug(`Event name: ${_context.eventName}`);
+  let trans = undefined;
   if (_context.eventName === 'pull_request') {
+    core.debug(`Payload action: ${_context.payload.action}`);
     if (_context.payload.action in ['closed'] && _context.payload.pull_request.merged === 'true') {
-      return _argv.transitionOnPrMerge;
+      trans =_argv.transitionOnPrMerge;
     }
     if (_context.payload.action in ['opened']) {
-      return _argv.transitionOnPrOpen;
+      trans =_argv.transitionOnPrOpen;
     }
   } else if (_context.eventName === 'pull_request_review') {
     if (_context.payload.state === 'APPROVED') {
-      return _argv.transitionOnPrApproval;
+      trans = _argv.transitionOnPrApproval;
     }
   } else if (_context.eventName in ['create']) {
-    return _argv.transitionOnNewBranch;
+    trans = _argv.transitionOnNewBranch;
   }
+
+  return trans;
 }
 
 export function assignReferences(_githubEvent, _context, _argv) {
