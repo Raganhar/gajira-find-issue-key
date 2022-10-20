@@ -485,6 +485,7 @@ export default class Action {
         // } catch (error) {
         //   core.error(error);
         // }
+        core.debug(`Adding Jira issue: ${issueObject.key}`);
         this.foundKeys.push(issueObject);
       }
     }
